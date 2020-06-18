@@ -1,7 +1,9 @@
 {
   "name": "akira-shop-decorator",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.0.1",
+  "private": false,
+  "description": "基于vue.js 和 element-UI 以及 uni-app 的商城装修插件",
+  "author": "yaseiakira",
   "scripts": {
     "dev": "cd displayer && npm run build:h5 && cd.. && vue-cli-service serve --open",
     "build": "vue-cli-service build",
