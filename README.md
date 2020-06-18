@@ -7,9 +7,9 @@ npm install akira-shop-decorator
 ```
 # 在vue项目中使用 在 main.js 中
 ```
-import AkiraDecorator from 'akira-shop-decorator'
-Vue.use(AkiraDecorator)
+import AkiraShopDecorator from 'akira-shop-decorator'
+Vue.use(AkiraShopDecorator)
 
 // 组件中
-<akira-decorator></akira-decorator>
+<akira-shop-decorator></akira-decorator>
 ```

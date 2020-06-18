@@ -100,7 +100,7 @@
     import AkiraSdDisplayer from "./displayer/akira-sd-displayer";
 
     export default {
-        name: "akira-decorator",
+        name: "akira-shop-decorator",
         components: {AkiraSdDisplayer, ThemeColorsSelector, AkiraSdPropBox, AkiraSdToolBox},
         data() {
             return {

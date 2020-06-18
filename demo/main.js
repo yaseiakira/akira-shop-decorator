@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import App from './App.vue'
 
-import AkiraDecorator from '../packages'
+import AkiraShopDecorator from '../packages'
 
-Vue.use(AkiraDecorator)
+Vue.use(AkiraShopDecorator)
 
 Vue.config.productionTip = false
 

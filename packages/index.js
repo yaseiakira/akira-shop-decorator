@@ -1,8 +1,8 @@
 
-import AkiraDecorator from './decorator'
+import AkiraShopDecorator from './decorator'
 
 const components = [
-    AkiraDecorator
+    AkiraShopDecorator
 ]
 
 const install = function (Vue) {
@@ -19,5 +19,5 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 export default {
     install,
-    AkiraDecorator
+    AkiraShopDecorator
 }

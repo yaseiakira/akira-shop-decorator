@@ -1,5 +1,5 @@
 <template>
-    <akira-decorator></akira-decorator>
+    <akira-shop-decorator></akira-shop-decorator>
 </template>
 
 <script>
