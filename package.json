@@ -1,6 +1,6 @@
 {
   "name": "akira-shop-decorator",
-  "version": "0.1.6",
+  "version": "0.2.0",
   "private": false,
   "description": "基于vue.js 和 element-UI 以及 uni-app 的商城装修插件",
   "author": "yaseiakira",
@@ -48,7 +48,7 @@
     "uni-app",
     "akira"
   ],
-  "main": "lib/akira-shop-decorator.common.js",
+  "main": "packages/index.js",
   "style": "lib/akira-shop-decorator.css",
   "eslintConfig": {
     "root": true,

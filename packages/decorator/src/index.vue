@@ -12,7 +12,7 @@
                             </button>
                         </el-tooltip>
                         <el-tooltip effect="light" content="保存" placement="top" :open-delay="800">
-                            <button class="ak-btn">
+                            <button class="ak-btn" @click="save">
                                 <svg class="svg-icon" aria-hidden="true">
                                     <use xlink:href="#icon-ak-save"></use>
                                 </svg>
@@ -64,8 +64,9 @@
                         </el-col>
                         <el-col :span="12">
                             <div class="menu-btn-group right">
-                                <el-tooltip effect="light" content="返回到商城" placement="right-end" :open-delay="800">
-                                    <button class="ak-btn">
+                                <el-tooltip effect="light" :content="returnBtnText" placement="right-end"
+                                            :open-delay="800">
+                                    <button class="ak-btn" @click="exit">
                                         <svg class="svg-icon" aria-hidden="true">
                                             <use xlink:href="#icon-ak-back"></use>
                                         </svg>
@@ -101,6 +102,12 @@
     export default {
         name: "akira-shop-decorator",
         components: {AkiraSdDisplayer, AkiraSdPropBox, AkiraSdToolBox},
+        props: {
+            returnBtnText: {
+                type: String,
+                default: '返回'
+            }
+        },
         data() {
             return {
                 pages: [],
@@ -110,6 +117,12 @@
             }
         },
         methods: {
+            save(){
+                this.$emit('onSave');
+            },
+            exit() {
+                this.$emit('onExit');
+            },
             onComponentChange(component) {
                 this.activeComponent = component;
             },
@@ -135,6 +148,8 @@
     }
 
     .menu-bar {
+        position: fixed;
+        width: 100%;
         line-height: 60px;
         background-color: #304156;
 
@@ -166,7 +181,7 @@
 
         .mobile-area {
             position: absolute;
-            top: 8px;
+            top: 10%;
             left: 50%;
             margin-left: -187.5px;
             width: 375px;

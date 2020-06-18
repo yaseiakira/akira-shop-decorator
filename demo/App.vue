@@ -6,11 +6,13 @@
 
     export default {
         name: 'App',
-
     }
 </script>
 
 <style>
+    body,html{
+        height: 100%;
+    }
     body {
         margin: 0;
     }
