@@ -27,6 +27,23 @@
     "eslint-plugin-vue": "^6.2.2",
     "vue-template-compiler": "^2.6.11"
   },
+  "files": [
+    "lib",
+    "packages",
+    "public"
+  ],
+  "keywords": [
+    "vue",
+    "element-ui",
+    "decorator",
+    "shop",
+    "店铺装修",
+    "自定义装修",
+    "uni-app",
+    "akira"
+  ],
+  "main": "lib/akira-shop-decorator.common.js",
+  "style": "lib/akira-shop-decorator.css",
   "eslintConfig": {
     "root": true,
     "env": {
