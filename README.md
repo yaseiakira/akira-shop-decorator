@@ -11,5 +11,5 @@ import AkiraShopDecorator from 'akira-shop-decorator'
 Vue.use(AkiraShopDecorator)
 
 // 组件中
-<akira-shop-decorator></akira-decorator>
+<akira-shop-decorator></akira-shop－decorator>
 ```
