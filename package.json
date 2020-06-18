@@ -11,6 +11,10 @@
     "lib": "vue-cli-service build --target lib --name akira-shop-decorator --dest lib packages/index.js",
     "postinstall": "copyfiles -E -V public/akira-sd-displayer/** ../../ && echo 已复制 akira-sd-displayer 到 public 目录下"
   },
+  "bugs": {
+    "url": "https://github.com/yaseiakira/akira-shop-decorator/issues"
+  },
+  "homepage": "https://github.com/yaseiakira/akira-shop-decorator",
   "dependencies": {
     "copyfiles": "^2.3.0",
     "core-js": "^3.6.5",
