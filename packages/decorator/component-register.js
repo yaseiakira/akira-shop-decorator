@@ -3,7 +3,7 @@ import Vue from 'vue'
 const register = () => {
   const requireComponent = require.context(
     // 其组件目录的相对路径
-    '../components',
+    './src/components',
     // 是否查询其子目录
     true,
     // 匹配基础组件文件名的正则表达式
@@ -19,6 +19,8 @@ const register = () => {
       .split('/')
       .pop()
       .replace(/\.\w+$/, '')
+
+      console.log(componentName)
 
     // 全局注册组件
     Vue.component(

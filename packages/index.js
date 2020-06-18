@@ -1,6 +1,8 @@
 
 import AkiraShopDecorator from './decorator'
 
+import propertyPanelsRegister from './decorator/component-register'
+
 const components = [
     AkiraShopDecorator
 ]
@@ -10,6 +12,7 @@ const install = function (Vue) {
     if (install.installed) return
     // 遍历注册全局组件
     components.map(component => Vue.component(component.name, component))
+    propertyPanelsRegister.register()
 }
 
 // 判断是否是直接引入文件

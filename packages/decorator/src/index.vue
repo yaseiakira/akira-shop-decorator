@@ -96,12 +96,11 @@
     import './icon/iconfont'
     import AkiraSdToolBox from "./tool-box/akira-sd-tool-box";
     import AkiraSdPropBox from "./property-box/akira-sd-prop-box";
-    import ThemeColorsSelector from "./components/theme-selector/theme-colors-selector";
     import AkiraSdDisplayer from "./displayer/akira-sd-displayer";
 
     export default {
         name: "akira-shop-decorator",
-        components: {AkiraSdDisplayer, ThemeColorsSelector, AkiraSdPropBox, AkiraSdToolBox},
+        components: {AkiraSdDisplayer, AkiraSdPropBox, AkiraSdToolBox},
         data() {
             return {
                 pages: [],
