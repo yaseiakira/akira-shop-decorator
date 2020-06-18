@@ -22,7 +22,7 @@
 </template>
 
 <script>
-    import themeColors from '../../../models/theme-color.model'
+    import themeColors from '../../models/theme-color.model'
 
     export default {
         name: 'theme-colors-selector',

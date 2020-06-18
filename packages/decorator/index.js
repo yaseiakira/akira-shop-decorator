@@ -11,7 +11,7 @@ AkiraShopDecorator.install = function (Vue) {
 
 Vue.use(ElementUI);
 
-import propertyPanelsRegister from './src/components/property-panels/component-register'
+import propertyPanelsRegister from './src/components/component-register'
 
 propertyPanelsRegister.register()
 

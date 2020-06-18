@@ -58,12 +58,11 @@
 
 <script>
     import ColoruiIconSelector from "../colorui-icon-selector/colorui-icon-selector";
-    import ThemeColorsSelector from "./theme-colors/theme-colors-selector";
+    import ThemeColorsSelector from "../theme-selector/theme-colors-selector";
     import ClickEventManager from "../click-event-manager/click-event-manager";
 
     export default {
         name: 'common-top-tool-bar-property',
-        components: {ClickEventManager, ThemeColorsSelector, ColoruiIconSelector},
         props: {
             property: {
                 type: Object

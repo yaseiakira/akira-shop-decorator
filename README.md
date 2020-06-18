@@ -5,11 +5,27 @@
 ```
 npm install akira-shop-decorator
 ```
-# 在vue项目中使用 在 main.js 中
+# 在vue项目中使用
 ```
+// 在 main.js 中
 import AkiraShopDecorator from 'akira-shop-decorator'
 Vue.use(AkiraShopDecorator)
 
 // 组件中
-<akira-shop-decorator></akira-shop-decorator>
+<template>
+  <akira-shop-decorator></akira-shop-decorator>
+</template>
+<script>
+  export default {
+    data() {
+      return {
+        
+      }
+    }
+  }
+</script>
+
+<style scoped lang="scss">
+ @import "~akira-shop-decorator/lib/akira-shop-decorator.css"; // 注意要引入样式
+</style>
 ```

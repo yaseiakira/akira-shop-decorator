@@ -96,7 +96,7 @@
     import './icon/iconfont'
     import AkiraSdToolBox from "./tool-box/akira-sd-tool-box";
     import AkiraSdPropBox from "./property-box/akira-sd-prop-box";
-    import ThemeColorsSelector from "./components/property-panels/theme-colors/theme-colors-selector";
+    import ThemeColorsSelector from "./components/theme-selector/theme-colors-selector";
     import AkiraSdDisplayer from "./displayer/akira-sd-displayer";
 
     export default {
