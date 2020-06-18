@@ -24,10 +24,6 @@ Vue.use(AkiraShopDecorator)
     }
   }
 </script>
-
-<style scoped lang="scss">
- @import "~akira-shop-decorator/lib/akira-shop-decorator.css"; // 注意要引入样式
-</style>
 ```
 ## akira-shop-decorator 组件可用事件
 ```
