@@ -1,17 +1,18 @@
 <template>
 	<view class="component-container">
 		<view class="tool-bar" v-show="component.active">
-			<button class="tool-btn cu-btn sm bg-red">
+			<button class="tool-btn cu-btn sm bg-red" @tap="remove">
 				<text class="cuIcon-close"></text>
 			</button>
 		</view>
 		<keep-alive>
-			<component :is="component.componentName" :propertyData="component.property" :theme="theme"></component>
+			<component :is="component.componentName" :propertyData="component.property" :theme="theme" @clickEvent="clickEvent"></component>
 		</keep-alive>
 	</view>
 </template>
 
 <script>
+	import common from '../@utils/common.js'
 	export default {
 		name: 'component-container',
 		props: {
@@ -29,16 +30,24 @@
 				type: Object
 			}
 		},
+		watch:{
+			
+		},
 		data() {
 			return {
 
 			}
 		},
 		created() {
-			console.log(this.component)
+
 		},
 		methods: {
-
+			remove(){
+				console.log('remove component')
+			},
+			clickEvent(config) {
+				common.execComponentEvent(config)
+			}
 		}
 	}
 </script>
@@ -53,6 +62,7 @@
 			width: 100%;
 			border: 2px dashed red;
 			z-index: 1;
+			pointer-events: none;
 
 
 			.tool-btn {

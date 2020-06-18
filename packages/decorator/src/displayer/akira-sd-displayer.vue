@@ -37,7 +37,6 @@
                 }, '*');
             },
             addComponent(template) {
-                console.log(window.origin)
                 this.$refs.iframe.contentWindow.postMessage({
                     method: 'addComponent',
                     messageContent: template

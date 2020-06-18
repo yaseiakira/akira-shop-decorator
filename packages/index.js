@@ -4,6 +4,7 @@ import ColoruiIconSelector from './decorator/src/components/colorui-icon-selecto
 import CommonSingleButtonProperty from './decorator/src/components/property-panels/common-single-button-property'
 import CommonTabsBarProperty from './decorator/src/components/property-panels/common-tabs-bar-property'
 import CommonTopToolBarProperty from './decorator/src/components/property-panels/common-top-tool-bar-property'
+import CommonSearchBarProperty from './decorator/src/components/property-panels/common-search-bar-property'
 import PageProperty from './decorator/src/components/property-panels/page-property'
 import ThemeColorsSelector from './decorator/src/components/theme-selector/theme-colors-selector'
 
@@ -15,6 +16,7 @@ const components = [
     CommonSingleButtonProperty,
     CommonTabsBarProperty,
     CommonTopToolBarProperty,
+    CommonSearchBarProperty,
     PageProperty
 
 ]

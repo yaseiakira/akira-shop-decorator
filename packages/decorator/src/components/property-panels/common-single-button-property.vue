@@ -1,6 +1,6 @@
 <template>
     <div class="common-single-button-property">
-
+        common-single-button-property
     </div>
 </template>
 

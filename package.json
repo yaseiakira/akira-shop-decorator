@@ -1,6 +1,6 @@
 {
   "name": "akira-shop-decorator",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "private": false,
   "description": "基于vue.js 和 element-UI 以及 uni-app 的商城装修插件",
   "author": "yaseiakira",

@@ -1,16 +1,16 @@
 <template>
 	<view class="content custom-body" :style="{'background':main.page.background}">
 		<view class="top-tool-bar" v-if="main.topToolBar">
-			<component-container :component="main.topToolBar" @click="acviteComponent(main.topToolBar)" :theme="main.theme"></component-container>
+			<component-container :component="main.topToolBar" @click.native="acviteTopBarComponent" :theme="main.theme"></component-container>
 		</view>
 		<view class="scroll-content" :class="{'hasTopBar':main.hasTopBar,'hasBottomBar': main.hasBottomBar}">
 			<draggable v-model="main.components">
-				<component-container v-for="item in main.components" :key="item.id" :component="item.componentData" :theme="main.theme"
-				 @click="acviteComponent(item)"></component-container>
+				<component-container v-for="(item,index) in main.components" :key="index" :component="item" :theme="main.theme"
+				 @click.native="acviteComponent(index)"></component-container>
 			</draggable>
 		</view>
 		<view class="bottom-tool-bar" v-if="main.bottomToolBar">
-			<component-container :component="main.bottomToolBar" :theme="main.theme" @click="acviteComponent(main.bottomToolBar)"></component-container>
+			<component-container :component="main.bottomToolBar" :theme="main.theme" @click.native="acviteBottomBarComponent"></component-container>
 		</view>
 	</view>
 </template>
@@ -46,29 +46,41 @@
 			window.removeEventListener('message', this.receiveMessage);
 		},
 		methods: {
-			acviteComponent(component) {
-				if (component.id) {
-					this.main.components.forEach(c => {
-						if (c.id && c.id == component.id) {
-							c.acvite = true;
-							this.postMessageToParent('componentChange', c.componentData);
-							return;
-						}
-					})
-				} else {
-					component.acvite = true;
-					if (component.componentName === 'common-top-tool-bar') {
-						if (this.main.bottomToolBar) {
-							this.main.bottomToolBar.active = false;
-						}
-					}
-					// 如果是底部工具栏
-					if (component.componentName === 'common-tabs-bar') {
-						if (this.main.topToolBar) {
-							this.main.topToolBar.active = false;
-						}
-					}
-					this.postMessageToParent('componentChange', component);
+			acviteTopBarComponent() {
+				if (this.main.bottomToolBar) {
+					this.$set(this.main.bottomToolBar, 'active', false)
+				}
+				this.$set(this.main.topToolBar, 'active', true)
+				this.unActiveComponents();
+				this.postMessageToParent('componentChange', this.main.topToolBar);
+			},
+			acviteBottomBarComponent() {
+				if (this.main.topToolBar) {
+					this.$set(this.main.topToolBar, 'active', false)
+				}
+				this.$set(this.main.bottomToolBar, 'active', true)
+				this.unActiveComponents();
+				this.postMessageToParent('componentChange', this.main.bottomToolBar);
+			},
+			acviteComponent(index) {
+				for (let i = 0; i < this.main.components.length; i++) {
+					this.$set(this.main.components[i], 'active', i === index)
+				}
+				this.unActiveAllTopAndBottom();
+				this.postMessageToParent('componentChange', this.main.components[index]);
+			},
+			unActiveAllTopAndBottom() {
+				if (this.main.topToolBar) {
+					this.$set(this.main.topToolBar, 'active', false)
+				}
+				if (this.main.bottomToolBar) {
+					this.$set(this.main.bottomToolBar, 'active', false)
+				}
+			},
+			unActiveComponents() {
+				for (let i = 0; i < this.main.components.length; i++) {
+					this.main.components[i].active = false;
+					// this.$set(this.main.components, i, this.main.components[i])
 				}
 			},
 			confirm() {
@@ -93,7 +105,6 @@
 				}
 			},
 			changeTheme(theme) {
-				console.log(theme)
 				this.main.theme = theme
 			},
 			propertyChange(property) {
@@ -101,9 +112,15 @@
 					case 'page-property':
 						this.pagePropertyChange(property.data);
 						break;
+					case 'common-top-tool-bar-property':
+						this.commonTopToolBarPropertyChange(property.data);
+						break;
 					default:
 						break
 				}
+			},
+			commonTopToolBarPropertyChange(property) {
+				this.$set(this.main.topToolBar, 'property', property)
 			},
 			pagePropertyChange(property) {
 				if (property.isImage) {
@@ -131,6 +148,7 @@
 						this.main.hasTopBar = true;
 						this.postMessageToParent('componentChange', component);
 					}
+					this.unActiveComponents();
 					return;
 				}
 				// 如果是底部工具栏
@@ -148,13 +166,16 @@
 						this.main.hasBottomBar = true;
 						this.postMessageToParent('componentChange', component);
 					}
+					this.unActiveComponents();
 					return;
 				}
+				// 已激活的设置未激活
+				for (let i = 0; i < this.main.components.length; i++) {
+					this.$set(this.main.components[i], 'active', false)
+				}
 				// 新增组件,选中该组件
-				this.main.components.push({
-					id: new Date().getTime(),
-					componentData: component
-				})
+				this.main.components.push(component)
+				this.unActiveAllTopAndBottom();
 				this.postMessageToParent('componentChange', component)
 			},
 			postMessageToParent(method, content) {

@@ -18,79 +18,15 @@
 </template>
 
 <script>
+    import topToolBar from '../models/tools-panel/common/top-tool-bar.model'
+
     export default {
         name: 'akira-sd-tool-box',
         data() {
             return {
                 toolsGroup: [{
                     name: 'common',
-                    tools: [{
-                        name: '顶部工具条',
-                        componentName: 'common-top-tool-bar',
-                        icon: 'icon-ak-top-tool-bar',
-                        property: {
-                            left: {
-                                text: '返回',
-                                icon: 'cuIcon-back',
-                                color: '',
-                                action: '',
-                                link: '',
-                                visible: true,
-                                clickConfig: {
-                                    type: 0,
-                                    navigationConfig: {
-                                        page: '',
-                                        url: '',
-                                        type: 0
-                                    },
-                                    toastConfig: {
-                                        title: '',
-                                        icon: '', //success , loading,none
-                                        mask: false,
-                                        duration: 1500,
-                                        position: '' //top ,center,bottom
-                                    },
-                                    modalConfig: {
-                                        title: '',
-                                        content: '',
-                                        showCancel: true,
-                                        cancelText: '',
-                                        confirmText: ''
-                                    },
-                                    custom: {
-                                        methodName: ''
-                                    }
-                                }
-                            },
-                            center: {
-                                userSearchBar: false,
-                                searchBarPlaceholder: '搜索...',
-                                roundSearchBar: true,
-                                text: '欢迎使用',
-                                color: '',
-                                clickConfig: {
-                                    type: 0,
-                                    toastConfig: {},
-                                    modalConfig: {},
-                                    custom: {}
-                                }
-                            },
-                            right: {
-                                text: '',
-                                icon: 'cuIcon-more',
-                                color: '',
-                                action: '',
-                                link: '',
-                                visible: true,
-                                clickConfig: {
-                                    type: 0,
-                                    toastConfig: {},
-                                    modalConfig: {},
-                                    custom: {}
-                                }
-                            }
-                        }
-                    }, {
+                    tools: [topToolBar, {
                         name: '搜索框',
                         componentName: 'common-search-bar',
                         icon: 'icon-ak-search-bar'
@@ -124,7 +60,7 @@
                         icon: 'icon-ak-btn-group'
                     }, {
                         name: '单按钮',
-                        componentName: 'common-button',
+                        componentName: 'common-single-button',
                         icon: 'icon-ak-btn',
                         property: {
                             bgColor: 'bg-white',
