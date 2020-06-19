@@ -117,7 +117,7 @@
             }
         },
         methods: {
-            save(){
+            save() {
                 this.$emit('onSave');
             },
             exit() {
@@ -142,6 +142,10 @@
 <style scoped lang="scss">
     @import "./styles/common.scss";
 
+    .text-right {
+        text-align: right;
+    }
+
     .decorator {
         height: 100%;
         background-color: #f2f2f2;
@@ -152,6 +156,7 @@
         width: 100%;
         line-height: 60px;
         background-color: #304156;
+        z-index: 520;
 
         .menu-btn-group {
             .btn-danger {
@@ -177,7 +182,6 @@
         position: relative;
         height: 100%;
         padding: 0;
-        text-align: center;
 
         .mobile-area {
             position: absolute;

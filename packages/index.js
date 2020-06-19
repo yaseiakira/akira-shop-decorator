@@ -7,17 +7,23 @@ import CommonTopToolBarProperty from './decorator/src/components/property-panels
 import CommonSearchBarProperty from './decorator/src/components/property-panels/common-search-bar-property'
 import PageProperty from './decorator/src/components/property-panels/page-property'
 import ThemeColorsSelector from './decorator/src/components/theme-selector/theme-colors-selector'
+import ThemeColorPicker from './decorator/src/components/theme-selector/theme-color-picker'
+import SingleImagePicker from './decorator/src/components/single-image-picker/single-image-picker'
+import CommonButtonPropertyComponent from './decorator/src/components/common-button-property-component/common-button-property-component'
 
 const components = [
     AkiraShopDecorator,
     ClickEventManager,
     ColoruiIconSelector,
     ThemeColorsSelector,
+    ThemeColorPicker,
+    SingleImagePicker,
     CommonSingleButtonProperty,
     CommonTabsBarProperty,
     CommonTopToolBarProperty,
     CommonSearchBarProperty,
-    PageProperty
+    PageProperty,
+    CommonButtonPropertyComponent
 
 ]
 

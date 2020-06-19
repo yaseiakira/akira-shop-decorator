@@ -19,6 +19,8 @@
 
 <script>
     import topToolBar from '../models/tools-panel/common/top-tool-bar.model'
+    import bottomTabBar from '../models/tools-panel/common/bottom-tab-bar.model'
+    import searchBar from '../models/tools-panel/common/search-bar.model'
 
     export default {
         name: 'akira-sd-tool-box',
@@ -26,11 +28,7 @@
             return {
                 toolsGroup: [{
                     name: 'common',
-                    tools: [topToolBar, {
-                        name: '搜索框',
-                        componentName: 'common-search-bar',
-                        icon: 'icon-ak-search-bar'
-                    }, {
+                    tools: [topToolBar, searchBar, {
                         name: '公告栏',
                         componentName: 'common-notice-bar',
                         icon: 'icon-ak-notice-bar'
@@ -42,11 +40,7 @@
                         name: '列表导航',
                         componentName: 'common-nav-list',
                         icon: 'icon-ak-nav-list'
-                    }, {
-                        name: '底部导航',
-                        componentName: 'common-tabs-bar',
-                        icon: 'icon-ak-tabbar'
-                    }, {
+                    }, bottomTabBar, {
                         name: '表单',
                         componentName: 'common-basic-form',
                         icon: 'icon-ak-form'

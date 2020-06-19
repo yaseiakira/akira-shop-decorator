@@ -1,7 +1,11 @@
 <template>
     <a class="colorui-icon-selector" @click="showDialog">
-        <div><i class="cuIcon" :class="'cuIcon-' + selected.name"></i></div>
-        <div>{{selected.name}}</div>
+        <div slot="reference" class="icon-picker-button">
+                <span class="icon-picker__color">
+                    <span class="icon-picker__color-inner"></span>
+                </span>
+            <span class="icon-picker__icon" :class="'cuIcon-' + selected.name"></span>
+        </div>
         <el-dialog
                 top="8vh"
                 :visible="selectorDialogShow"
@@ -53,7 +57,7 @@
         },
         data() {
             return {
-                searchValue:'',
+                searchValue: '',
                 selectorDialogShow: false,
                 icons: [],
                 selected: {
@@ -63,7 +67,7 @@
         },
         created() {
             if (this.currentIcon) {
-                this.selected.name = this.currentIcon.replace('cuIcon-', '')
+                this.selected.name = this.currentIcon
             }
             const list = JSON.parse(JSON.stringify(colorUIIcons));
             list.forEach(i => {
@@ -72,7 +76,7 @@
             this.icons = list
         },
         methods: {
-            search(){
+            search() {
                 let key = this.searchValue.toLowerCase();
                 let list = this.icons;
                 for (let i = 0; i < list.length; i++) {
@@ -104,7 +108,7 @@
     }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
     @import "../../icon/colorui-icon.css";
 
     .cuIcon {
@@ -115,17 +119,52 @@
 
     .colorui-icon-selector {
         display: inline-block;
-        text-align: center;
-        width: 120px;
-        cursor: pointer;
-        border-radius: 4px;
-        border: 1px dashed #909399;
-        padding: 4px;
+        position: relative;
+        line-height: normal;
+        height: 40px;
     }
 
-    .colorui-icon-selector:hover {
-        border: 1px dashed #409EFF;
-        color: #409EFF
+    .icon-picker-button {
+        display: inline-block;
+        box-sizing: border-box;
+        height: 40px;
+        width: 40px;
+        padding: 4px;
+        border: 1px solid #e6e6e6;
+        border-radius: 4px;
+        font-size: 0;
+        position: relative;
+        cursor: pointer;
+
+        .icon-picker__color {
+            position: relative;
+            display: block;
+            box-sizing: border-box;
+            border-radius: 2px;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+
+            .icon-picker__color-inner {
+                position: absolute;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+            }
+        }
+
+        .icon-picker__icon {
+            display: inline-block;
+            width: 100%;
+            color: #999;
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate3d(-50%, -50%, 0);
+            font-size: 30px;
+        }
     }
 
     .colorui-icon-selector .cuIcon {

@@ -115,9 +115,15 @@
 					case 'common-top-tool-bar-property':
 						this.commonTopToolBarPropertyChange(property.data);
 						break;
+					case 'common-tabs-bar-property':
+						this.commonBottomTabBarPropertyChange(property.data);
+						break;
 					default:
 						break
 				}
+			},
+			commonBottomTabBarPropertyChange(property) {
+				this.$set(this.main.bottomToolBar, 'property', property)
 			},
 			commonTopToolBarPropertyChange(property) {
 				this.$set(this.main.topToolBar, 'property', property)

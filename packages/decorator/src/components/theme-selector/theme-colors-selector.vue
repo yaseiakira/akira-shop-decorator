@@ -1,14 +1,20 @@
 <template>
     <div class="theme-colors-selector">
-        <el-form :inline="true">
-            <el-form-item :label="text" style="margin:0">
-                <el-color-picker v-model="selectedTheme.color" @change="customColorChange"></el-color-picker>
-            </el-form-item>
-            <el-form-item style="margin-bottom:0;margin-left:4px">
-                <el-button type="text" @click="setDefault">
-                    设为默认
-                </el-button>
-            </el-form-item>
+        <el-form>
+            <el-row :gutter="20">
+                <el-col :span="12">
+                    <el-form-item :label="text" style="margin:0">
+                        <el-color-picker v-model="selectedTheme.color" @change="customColorChange"></el-color-picker>
+                    </el-form-item>
+                </el-col>
+                <el-col :span="12" style="text-align: right">
+                    <el-form-item>
+                        <el-button type="text" @click="setDefault">
+                            设为默认
+                        </el-button>
+                    </el-form-item>
+                </el-col>
+            </el-row>
         </el-form>
         <div class="themes">
             <el-radio-group v-model="selectedTheme.name" :fill="selectedTheme.color" @change="onThemeChange">

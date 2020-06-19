@@ -3,6 +3,14 @@ const execComponentEvent = (config) => {
 		case 0: // 导航
 			if (config.navigationConfig.type == 0 && config.navigationConfig.page) {
 				// 普通页面导航
+				if (config.debug) {
+					uni.showToast({
+						title: `导航至 ${config.navigationConfig.page}`,
+						icon: 'none',
+						mask: true
+					})
+					break;
+				}
 				uni.navigateTo({
 					url: config.navigationConfig.page
 				})
@@ -10,6 +18,14 @@ const execComponentEvent = (config) => {
 			}
 			if (config.navigationConfig.type == 1 && config.navigationConfig.page) {
 				// tabbar导航
+				if (config.debug) {
+					uni.showToast({
+						title: `切换底部导航至 ${config.navigationConfig.page}`,
+						icon: 'none',
+						mask: true
+					})
+					break;
+				}
 				uni.switchTab({
 					url: config.navigationConfig.page
 				})
@@ -30,6 +46,14 @@ const execComponentEvent = (config) => {
 			break;
 		case 3: // 自定义
 			if (config.custom.methodName) {
+				if (config.debug) {
+					uni.showToast({
+						title: `触发自定义事件 ${config.custom.methodName}`,
+						icon: 'none',
+						mask: true
+					})
+					break;
+				}
 				uni.$emit(config.custom.methodName)
 			}
 			break;

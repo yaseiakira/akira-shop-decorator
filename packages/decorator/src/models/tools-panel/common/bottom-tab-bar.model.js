@@ -1,20 +1,27 @@
-const topToolBar = {
-    name: '顶部工具条',
-    componentName: 'common-top-tool-bar',
-    icon: 'icon-ak-top-tool-bar',
+const bottomTabBar = {
+    name: '底部导航',
+    componentName: 'common-tabs-bar',
+    icon: 'icon-ak-tabbar',
     property: {
-        left: {
-            text: '返回',
-            icon: 'back',
-            color: '',
-            visible: true,
+        count: 4,
+        color: 'gray',
+        activeColor: 'green',
+        tabs: [{
+            text: '首页',
+            customImage: false,
+            image: '',
+            activeImage: '',
+            icon: 'home',
+            enableBadge: false,
+            badgeMax: 99,
+            badgeValue: 1,
             clickConfig: {
                 debug: true,
                 type: 0,
                 navigationConfig: {
                     page: '',
                     url: '',
-                    type: 0
+                    type: 1
                 },
                 toastConfig: {
                     title: '',
@@ -34,20 +41,22 @@ const topToolBar = {
                     methodName: ''
                 }
             }
-        },
-        center: {
-            useSearchBar: false,
-            searchBarPlaceholder: '搜索...',
-            roundSearchBar: true,
-            text: '欢迎使用',
-            color: '',
+        }, {
+            text: '商品',
+            customImage: false,
+            image: '',
+            activeImage: '',
+            icon: 'apps',
+            enableBadge: false,
+            badgeMax: 99,
+            badgeValue: 1,
             clickConfig: {
                 debug: true,
                 type: 0,
                 navigationConfig: {
                     page: '',
                     url: '',
-                    type: 0
+                    type: 1
                 },
                 toastConfig: {
                     title: '',
@@ -67,19 +76,22 @@ const topToolBar = {
                     methodName: ''
                 }
             }
-        },
-        right: {
-            text: '',
-            icon: 'more',
-            color: '',
-            visible: true,
+        }, {
+            text: '购物车',
+            customImage: false,
+            image: '',
+            activeImage: '',
+            icon: 'cart',
+            enableBadge: true,
+            badgeMax: 99,
+            badgeValue: 1,
             clickConfig: {
                 debug: true,
                 type: 0,
                 navigationConfig: {
                     page: '',
                     url: '',
-                    type: 0
+                    type: 1
                 },
                 toastConfig: {
                     title: '',
@@ -99,7 +111,42 @@ const topToolBar = {
                     methodName: ''
                 }
             }
-        }
+        }, {
+            text: '我的',
+            customImage: false,
+            activeImage: '',
+            image: '',
+            icon: 'people',
+            enableBadge: false,
+            badgeMax: 99,
+            badgeValue: 1,
+            clickConfig: {
+                debug: true,
+                type: 0,
+                navigationConfig: {
+                    page: '',
+                    url: '',
+                    type: 1
+                },
+                toastConfig: {
+                    title: '',
+                    icon: '', //success , loading,none
+                    mask: false,
+                    duration: 1500,
+                    position: '' //top ,center,bottom
+                },
+                modalConfig: {
+                    title: '',
+                    content: '',
+                    showCancel: true,
+                    cancelText: '',
+                    confirmText: ''
+                },
+                custom: {
+                    methodName: ''
+                }
+            }
+        }]
     }
 }
-export default topToolBar
+export default bottomTabBar

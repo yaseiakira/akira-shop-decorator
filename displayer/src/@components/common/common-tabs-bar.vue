@@ -1,31 +1,18 @@
 <template>
 	<view class="common-tabs-bar">
-		<view class="cu-bar tabbar bg-white">
-			<view class="action">
-				<view class="cuIcon-cu-image">
-					<image src="/static/tabbar/basics_cur.png"></image>
+		<view class="cu-bar tabbar" :class="'bg-'+ theme.name">
+			<view class="action" v-for="(tab,index) in propertyData.tabs" :key="index" v-show="(index+1) <= propertyData.count"
+			 @tap="clickEvent(index,tab.clickConfig)">
+				<view class="cuIcon-cu-image" v-if="tab.customImage">
+					<image :src="activeIndex == index ? tab.activeImage : tab.image"></image>
+					<view class="cu-tag badge" v-if="tab.enableBadge">{{tab.badgeValue | badgeRender(tab.badgeMax)}}</view>
 				</view>
-				<view class="text-green">元素</view>
-			</view>
-			<view class="action">
-				<view class="cuIcon-cu-image">
-					<image src="/static/tabbar/component.png"></image>
+				<view :class="['cuIcon-'+tab.icon , activeIndex == index ? 'text-'+ propertyData.activeColor : 'text-' + propertyData.color]"
+				 :style="{color:activeIndex == index ? (propertyData.activeColor.indexOf('#')==-1 ? '' : propertyData.activeColor) : (propertyData.color.indexOf('#')==-1 ? '' : propertyData.color)}"
+				 v-if="!tab.customImage">
+					<view class="cu-tag badge" v-if="tab.enableBadge">{{tab.badgeValue | badgeRender(tab.badgeMax)}}</view>
 				</view>
-				<view class="text-gray">组件</view>
-			</view>
-			<view class="action">
-				<view class="cuIcon-cu-image">
-					<image src="/static/tabbar/plugin.png"></image>
-					<view class="cu-tag badge">99</view>
-				</view>
-				<view class="text-gray">扩展</view>
-			</view>
-			<view class="action">
-				<view class="cuIcon-cu-image">
-					<image src="/static/tabbar/about.png"></image>
-					<view class="cu-tag badge"></view>
-				</view>
-				<view class="text-gray">关于</view>
+				<view :class="activeIndex == index ? 'text-'+ propertyData.activeColor : 'text-' + propertyData.color " :style="{color:activeIndex == index ? (propertyData.activeColor.indexOf('#')==-1 ? '' : propertyData.activeColor) : (propertyData.color.indexOf('#')==-1 ? '' : propertyData.color)}">{{tab.text}}</view>
 			</view>
 		</view>
 	</view>
@@ -33,7 +20,34 @@
 
 <script>
 	export default {
-		name: 'common-tabs-bar'
+		name: 'common-tabs-bar',
+		filters: {
+			badgeRender(value, max) {
+				return value < max ? value : max + '+';
+			}
+		},
+		props: {
+			propertyData: {
+				type: Object
+			},
+			theme: {
+				type: Object
+			}
+		},
+		data() {
+			return {
+				activeIndex: 0
+			}
+		},
+		created() {
+
+		},
+		methods: {
+			clickEvent(index, config) {
+				this.activeIndex = index
+				this.$emit('clickEvent', config)
+			}
+		}
 	}
 </script>
 

@@ -40,7 +40,8 @@
                     1. 提示内容建议简短明了<br>2. 显示蒙层可以防止用户点击到后面的内容<br>3. 显示时间为毫秒,1秒=1000毫秒
                 </el-alert>
                 <el-form-item label="提示内容">
-                    <el-input type="text" v-model="form.toastConfig.title" placeholder="如:hello akira!" @input="propertyChange"></el-input>
+                    <el-input type="text" v-model="form.toastConfig.title" placeholder="如:hello akira!"
+                              @input="propertyChange"></el-input>
                 </el-form-item>
                 <el-form-item label="图标">
                     <el-radio-group v-model="form.toastConfig.icon" @change="propertyChange">
@@ -60,29 +61,35 @@
                     <el-switch v-model="form.toastConfig.mask" @change="propertyChange"></el-switch>
                 </el-form-item>
                 <el-form-item label="显示时间">
-                    <el-input-number v-model="form.toastConfig.duration" :step="100" size="small" @change="propertyChange"></el-input-number>
+                    <el-input-number v-model="form.toastConfig.duration" :step="100" size="small"
+                                     @change="propertyChange"></el-input-number>
                 </el-form-item>
             </div>
             <div class="modal-config" v-show="form.type==2">
                 <el-form-item label="标题">
-                    <el-input type="text" v-model="form.modalConfig.title" placeholder="如:提示" @input="propertyChange"></el-input>
+                    <el-input type="text" v-model="form.modalConfig.title" placeholder="如:提示"
+                              @input="propertyChange"></el-input>
                 </el-form-item>
                 <el-form-item label="内容">
-                    <el-input type="text" v-model="form.modalConfig.content" placeholder="如:hello akira!" @input="propertyChange"></el-input>
+                    <el-input type="text" v-model="form.modalConfig.content" placeholder="如:hello akira!"
+                              @input="propertyChange"></el-input>
                 </el-form-item>
                 <el-form-item label="显示取消按钮">
                     <el-switch v-model="form.modalConfig.showCancel" @change="propertyChange"></el-switch>
                 </el-form-item>
                 <el-form-item label="取消按钮文字">
-                    <el-input type="text" v-model="form.modalConfig.cancelText" placeholder="如:取消" @input="propertyChange"></el-input>
+                    <el-input type="text" v-model="form.modalConfig.cancelText" placeholder="如:取消"
+                              @input="propertyChange"></el-input>
                 </el-form-item>
                 <el-form-item label="确认按钮文字">
-                    <el-input type="text" v-model="form.modalConfig.confirmText" placeholder="如:确定" @input="propertyChange"></el-input>
+                    <el-input type="text" v-model="form.modalConfig.confirmText" placeholder="如:确定"
+                              @input="propertyChange"></el-input>
                 </el-form-item>
             </div>
             <div class="custom-config" v-show="form.type==3">
                 <el-form-item label="方法名">
-                    <el-input type="text" v-model="form.custom.methodName" placeholder="如:onClick" @input="propertyChange"></el-input>
+                    <el-input type="text" v-model="form.custom.methodName" placeholder="如:onClick"
+                              @input="propertyChange"></el-input>
                 </el-form-item>
             </div>
         </el-form>
@@ -96,12 +103,21 @@
             title: {
                 type: String,
                 default: '点击事件设置'
+            },
+            config: {
+                type: Object
+            }
+        },
+        created() {
+            if (this.config) {
+                this.form = this.config
             }
         },
         data() {
             return {
                 form: {
                     type: 0,
+                    debug: true,
                     navigationConfig: {
                         page: '',
                         url: '',
