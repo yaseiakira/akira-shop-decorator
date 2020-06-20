@@ -15,15 +15,21 @@ Vue.use(AkiraShopDecorator)
 <template>
   <akira-shop-decorator></akira-shop-decorator>
 </template>
+
 <script>
   export default {
     data() {
       return {
-        
+        pages: []
       }
     }
   }
 </script>
+
+<style scoped lang="scss">
+  /*注意引入样式*/
+  @import '~akira-shop-decorator/lib/akira-shop-decorator.css'
+</style>
 ```
 ## akira-shop-decorator 组件可用事件
 ```
