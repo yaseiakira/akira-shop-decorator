@@ -1,5 +1,5 @@
 <template>
-	<view class="content custom-body" :style="{'background':main.page.background}">
+	<view class="content custom-body" :class="['bg-'+main.page.bgName]" :style="{'background':main.page.background}">
 		<view class="top-tool-bar" v-if="main.topToolBar">
 			<component-container :component="main.topToolBar" @click.native="acviteTopBarComponent" :theme="main.theme"></component-container>
 		</view>
@@ -26,9 +26,9 @@
 				main: {
 					page: {
 						background: '#f0f0f0',
+						bgName: ''
 					},
 					theme: {
-						color: '#fff',
 						name: 'white'
 					},
 					hasTopBar: false,
@@ -105,7 +105,7 @@
 				}
 			},
 			changeTheme(theme) {
-				this.main.theme = theme
+				this.main.theme.name = theme
 			},
 			propertyChange(property) {
 				switch (property.name) {
@@ -119,7 +119,14 @@
 						this.commonBottomTabBarPropertyChange(property.data);
 						break;
 					default:
+						this.commonPropertyChange(property.data);
 						break
+				}
+			},
+			commonPropertyChange(property) {
+				const index = this.main.components.findIndex(p => p.active);
+				if (index !== -1) {
+					this.$set(this.main.components[index], 'property', property)
 				}
 			},
 			commonBottomTabBarPropertyChange(property) {
@@ -130,11 +137,11 @@
 			},
 			pagePropertyChange(property) {
 				if (property.isImage) {
+					this.main.page.bgName = '';
 					this.main.page.background = 'url(' + property.bgImage + ') no-repeat top center / cover';
 				} else {
-					if (property.bgColor) {
-						this.main.page.background = property.bgColor;
-					}
+					this.main.page.background = property.bgColor.indexOf('#') == -1 ? '' : property.bgColor;
+					this.main.page.bgName = property.bgColor.indexOf('#') == -1 ? property.bgColor : '';
 				}
 			},
 			addComponent(component) {

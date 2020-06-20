@@ -24,18 +24,18 @@ const bottomTabBar = {
                     type: 1
                 },
                 toastConfig: {
-                    title: '',
-                    icon: '', //success , loading,none
+                    title: 'hello akira!',
+                    icon: 'none', //success , loading,none
                     mask: false,
                     duration: 1500,
-                    position: '' //top ,center,bottom
+                    position: 'center' //top ,center,bottom
                 },
                 modalConfig: {
-                    title: '',
-                    content: '',
+                    title: '提示',
+                    content: 'hello akira!',
                     showCancel: true,
-                    cancelText: '',
-                    confirmText: ''
+                    cancelText: '取消',
+                    confirmText: '确定'
                 },
                 custom: {
                     methodName: ''

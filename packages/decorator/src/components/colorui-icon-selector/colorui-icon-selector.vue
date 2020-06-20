@@ -15,16 +15,19 @@
                 @close="cancel"
                 :show-close="true">
             <template slot="title">
-                <el-row>
+                <el-row :gutter="20">
                     <el-col :span="12">
                         <b style="font-size: 18px">选择图标</b>
                     </el-col>
-                    <el-col :span="10" class="text-right">
+                    <el-col :span="8">
                         <el-input placeholder="搜索图标" size="small" v-model="searchValue">
                             <template slot="append">
                                 <el-button icon="el-icon-search" @click="search"></el-button>
                             </template>
                         </el-input>
+                    </el-col>
+                    <el-col :span="2" class="text-right">
+                        <el-button type="text" size="small" @click="clearIcon">不设置图标</el-button>
                     </el-col>
                 </el-row>
             </template>
@@ -50,9 +53,18 @@
 
     export default {
         name: "colorui-icon-selector",
+        model: {
+            prop: 'icon',
+            event: 'change'
+        },
         props: {
-            currentIcon: {
+            icon: {
                 type: String
+            }
+        },
+        watch: {
+            icon() {
+                this.setIcon();
             }
         },
         data() {
@@ -66,9 +78,7 @@
             }
         },
         created() {
-            if (this.currentIcon) {
-                this.selected.name = this.currentIcon
-            }
+            this.setIcon();
             const list = JSON.parse(JSON.stringify(colorUIIcons));
             list.forEach(i => {
                 i.active = this.selected.name == i.name
@@ -76,6 +86,16 @@
             this.icons = list
         },
         methods: {
+            setIcon() {
+                if (this.icon) {
+                    this.selected.name = this.icon
+                }
+            },
+            clearIcon() {
+                this.selected.name = ''
+                this.selectorDialogShow = false;
+                this.$emit('change', this.selected.name)
+            },
             search() {
                 let key = this.searchValue.toLowerCase();
                 let list = this.icons;
@@ -102,7 +122,7 @@
                 this.icons.forEach(i => {
                     i.active = this.selected.name == i.name
                 })
-                this.$emit('iconSelected', item)
+                this.$emit('change', item.name)
             }
         }
     }

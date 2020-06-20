@@ -4,21 +4,20 @@ const searchBar = {
     icon: 'icon-ak-search-bar',
     property: {
         bar: {
-            bgColor: '',
+            bgColor: 'white',
             round: true,
             placeholder: '搜索...',
             icon: 'search'
         },
         button: {
-            icon: '',
+            icon: 'search',
             round: true,
             circle: false,
             text: '搜索',
-            size: '',
+            size: 'medium',
             shadow: false,
             isLine: false,
             bgColor: 'green',
-            textColor: '',
             clickConfig: {
                 debug: true,
                 type: 0,
@@ -28,18 +27,18 @@ const searchBar = {
                     type: 0
                 },
                 toastConfig: {
-                    title: '',
-                    icon: '', //success , loading,none
+                    title: 'hello akira!',
+                    icon: 'none', //success , loading,none
                     mask: false,
                     duration: 1500,
-                    position: '' //top ,center,bottom
+                    position: 'center' //top ,center,bottom
                 },
                 modalConfig: {
-                    title: '',
-                    content: '',
+                    title: '提示',
+                    content: 'hello akira!',
                     showCancel: true,
-                    cancelText: '',
-                    confirmText: ''
+                    cancelText: '取消',
+                    confirmText: '确定'
                 },
                 custom: {
                     methodName: ''

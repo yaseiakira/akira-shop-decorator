@@ -21,6 +21,9 @@
     import topToolBar from '../models/tools-panel/common/top-tool-bar.model'
     import bottomTabBar from '../models/tools-panel/common/bottom-tab-bar.model'
     import searchBar from '../models/tools-panel/common/search-bar.model'
+    import singleButton from '../models/tools-panel/common/single-button.model'
+    import noticeBar from '../models/tools-panel/common/notice-bar.model'
+    import navList from '../models/tools-panel/common/nav-list.model'
 
     export default {
         name: 'akira-sd-tool-box',
@@ -28,19 +31,11 @@
             return {
                 toolsGroup: [{
                     name: 'common',
-                    tools: [topToolBar, searchBar, {
-                        name: '公告栏',
-                        componentName: 'common-notice-bar',
-                        icon: 'icon-ak-notice-bar'
-                    }, {
+                    tools: [topToolBar, searchBar, noticeBar, {
                         name: '卡片',
                         componentName: 'common-card',
                         icon: 'icon-ak-card'
-                    }, {
-                        name: '列表导航',
-                        componentName: 'common-nav-list',
-                        icon: 'icon-ak-nav-list'
-                    }, bottomTabBar, {
+                    }, navList, bottomTabBar, {
                         name: '表单',
                         componentName: 'common-basic-form',
                         icon: 'icon-ak-form'
@@ -52,19 +47,7 @@
                         name: '按钮组',
                         componentName: 'common-buttons-group',
                         icon: 'icon-ak-btn-group'
-                    }, {
-                        name: '单按钮',
-                        componentName: 'common-single-button',
-                        icon: 'icon-ak-btn',
-                        property: {
-                            bgColor: 'bg-white',
-                            text: '按钮',
-                            round: true,
-                            size: '',
-                            shadow: false,
-                            line: false
-                        }
-                    }, {
+                    }, singleButton, {
                         name: '浮动按钮',
                         componentName: 'common-float-button',
                         icon: 'icon-ak-btn-float'

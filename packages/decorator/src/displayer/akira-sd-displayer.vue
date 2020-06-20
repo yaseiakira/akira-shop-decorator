@@ -1,12 +1,17 @@
 <template>
     <div class="akira-mobile-displayer">
-        <iframe src="/akira-sd-displayer/index.html" ref="iframe"></iframe>
+        <iframe :src="url" ref="iframe"></iframe>
     </div>
 </template>
 
 <script>
     export default {
         name: "akira-sd-displayer",
+        data() {
+            return {
+                url: process.env.VUE_APP_DISPLAYER_URL
+            }
+        },
         mounted() {
             this.$nextTick(() => {
                 window.addEventListener('message', this.receiveMessage, false)

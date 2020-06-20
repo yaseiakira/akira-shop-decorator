@@ -20,8 +20,8 @@
             <el-row :gutter="20">
                 <el-col :span="6">
                     <el-form-item label="图标" v-show="!tab.customImage">
-                        <colorui-icon-selector @iconSelected="onPropertyChange('icon',$event)"
-                                               :current-icon="tab.icon"></colorui-icon-selector>
+                        <colorui-icon-selector @change="onPropertyChange('icon',$event)"
+                                               v-model="tab.icon"></colorui-icon-selector>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
@@ -51,8 +51,8 @@
                     </el-col>
                 </el-row>
             </div>
-            <click-event-manager :config="tab.clickConfig"
-                                 @propertyChange="onPropertyChange('event',$event)"></click-event-manager>
+            <click-event-manager v-model="tab.clickConfig"
+                                 @change="onPropertyChange"></click-event-manager>
         </el-form>
     </div>
 </template>
@@ -71,12 +71,6 @@
         },
         methods: {
             onPropertyChange(type, e) {
-                if (type === 'icon') {
-                    this.tab.icon = e.name;
-                }
-                if (type === 'event') {
-                    this.tab.clickConfig = e;
-                }
                 if (type === 'image') {
                     this.tab.image = e;
                 }

@@ -10,6 +10,7 @@ import ThemeColorsSelector from './decorator/src/components/theme-selector/theme
 import ThemeColorPicker from './decorator/src/components/theme-selector/theme-color-picker'
 import SingleImagePicker from './decorator/src/components/single-image-picker/single-image-picker'
 import CommonButtonPropertyComponent from './decorator/src/components/common-button-property-component/common-button-property-component'
+import CommonNoticeBarProperty from './decorator/src/components/property-panels/common-notice-bar-property'
 
 const components = [
     AkiraShopDecorator,
@@ -23,7 +24,8 @@ const components = [
     CommonTopToolBarProperty,
     CommonSearchBarProperty,
     PageProperty,
-    CommonButtonPropertyComponent
+    CommonButtonPropertyComponent,
+    CommonNoticeBarProperty
 
 ]
 

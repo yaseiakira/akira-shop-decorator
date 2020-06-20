@@ -33,6 +33,14 @@ const execComponentEvent = (config) => {
 			}
 			if (config.navigationConfig.url && /^http.+$/.test(config.navigationConfig.url)) {
 				// 跳转外部链接
+				if (config.debug) {
+					uni.showToast({
+						title: `跳转外部链接 ${config.navigationConfig.url}`,
+						icon: 'none',
+						mask: true
+					})
+					break;
+				}
 				uni.navigateTo({
 					url: `/pages/web-borwser/index?url=${config.navigationConfig.url}`
 				})

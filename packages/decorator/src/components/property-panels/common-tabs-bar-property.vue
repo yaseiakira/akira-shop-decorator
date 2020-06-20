@@ -13,14 +13,14 @@
             <el-row :gutter="20">
                 <el-col :span="8">
                     <el-form-item label="未激活">
-                        <theme-color-picker :color="property.color"
-                                            @colorChange="onPropertyChange('color','',$event)"></theme-color-picker>
+                        <theme-color-picker v-model="property.color"
+                                            @change="onPropertyChange"></theme-color-picker>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
                     <el-form-item label="激活">
-                        <theme-color-picker :color="property.activeColor"
-                                            @colorChange="onPropertyChange('activeColor','',$event)"></theme-color-picker>
+                        <theme-color-picker v-model="property.activeColor"
+                                            @change="onPropertyChange"></theme-color-picker>
                     </el-form-item>
                 </el-col>
             </el-row>

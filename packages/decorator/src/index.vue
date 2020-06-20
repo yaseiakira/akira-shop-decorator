@@ -51,7 +51,8 @@
                                             placement="bottom"
                                             width="380"
                                             trigger="click">
-                                        <theme-colors-selector @themeChange="onThemeChange"></theme-colors-selector>
+                                        <theme-colors-selector v-model="currentTheme"
+                                                               @change="onThemeChange"></theme-colors-selector>
                                         <button class="ak-btn" slot="reference">
                                             <svg class="svg-icon" aria-hidden="true">
                                                 <use xlink:href="#icon-ak-theme"></use>
@@ -110,6 +111,7 @@
         },
         data() {
             return {
+                currentTheme: 'white',
                 pages: [],
                 currentPage: '',
                 activePanel: 'page-property',
@@ -126,8 +128,8 @@
             onComponentChange(component) {
                 this.activeComponent = component;
             },
-            onThemeChange(theme) {
-                this.$refs.displayer.changeTheme(theme);
+            onThemeChange() {
+                this.$refs.displayer.changeTheme(this.currentTheme);
             },
             componentClick(component) {
                 this.$refs.displayer.addComponent(component);

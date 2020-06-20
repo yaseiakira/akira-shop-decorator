@@ -1,6 +1,6 @@
 <template>
 	<view class="common-top-tool-bar">
-		<view class="cu-bar search" :class="'bg-'+ theme.name">
+		<view class="cu-bar search" :class="'bg-'+ theme.name" :style="{'background-color': theme.name.indexOf('#')==-1 ? '' : theme.name}">
 			<view class="action" v-if="propertyData.left.visible" @tap="clickEvent(propertyData.left.clickConfig)">
 				<text :class="'cuIcon-'+propertyData.left.icon" :style="{color:propertyData.left.color.indexOf('#')==-1 ? '' : propertyData.left.color }" v-if="propertyData.left.icon"></text>
 				<text v-if="propertyData.left.text" :class="['text-' + propertyData.left.color]" :style="{color:propertyData.left.color.indexOf('#')==-1 ? '' : propertyData.left.color}">{{propertyData.left.text}}</text>
@@ -50,4 +50,5 @@
 </script>
 
 <style scoped lang="scss">
+	
 </style>

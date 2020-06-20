@@ -6,7 +6,7 @@
                 width="360"
                 trigger="click"
                 v-model="show">
-            <theme-colors-selector @themeChange="colorChange"></theme-colors-selector>
+            <theme-colors-selector v-model="activeColor" @change="colorChange"></theme-colors-selector>
             <div slot="reference" class="theme-color-picker-button">
                 <span class="color-picker__color">
                     <span class="color-picker__color-inner" :style="{'background':activeColor}"></span>
@@ -18,16 +18,26 @@
 </template>
 
 <script>
+    import themeColors from '../../models/theme-color.model'
 
     export default {
         name: "theme-color-picker",
+        model: {
+            prop: 'color',
+            event: 'change',
+        },
         props: {
             color: {
                 type: String
             }
         },
+        watch: {
+            color() {
+                this.setColor()
+            }
+        },
         created() {
-            this.activeColor = this.color;
+            this.setColor()
         },
         data() {
             return {
@@ -36,10 +46,17 @@
             }
         },
         methods: {
-            colorChange(color) {
+            setColor() {
+                const theme = themeColors.colors.find(p => p.name === this.color || p.color == this.color)
+                if (theme) {
+                    this.activeColor = theme.color;
+                } else {
+                    this.activeColor = this.color;
+                }
+            },
+            colorChange() {
                 this.show = false;
-                this.activeColor = color.color
-                this.$emit('colorChange', color)
+                this.$emit('change', this.activeColor)
             }
         }
     }

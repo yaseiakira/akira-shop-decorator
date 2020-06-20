@@ -1,6 +1,23 @@
 <template>
-	<view class="common-nav-list">
-		common-nav-list
+	<view class="cu-list common-nav-list menu">
+		<view class="cu-item">
+			<view class="content">
+				<text class="cuIcon-circlefill text-grey"></text>
+				<text class="text-grey">图标 + 标题</text>
+			</view>
+		</view>
+		<view class="cu-item">
+			<view class="content">
+				<text class="cuIcon-circlefill text-grey"></text>
+				<text class="text-grey">图标 + 标题</text>
+			</view>
+		</view>
+		<view class="cu-item">
+			<view class="content">
+				<text class="cuIcon-circlefill text-grey"></text>
+				<text class="text-grey">图标 + 标题</text>
+			</view>
+		</view>
 	</view>
 </template>
 

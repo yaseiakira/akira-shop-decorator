@@ -10,7 +10,7 @@
         </div>
         <el-form>
             <el-form-item v-show="!property.isImage">
-                <theme-colors-selector @themeChange="onThemeChange"></theme-colors-selector>
+                <theme-colors-selector v-model="property.bgColor" @change="propertyChange"></theme-colors-selector>
             </el-form-item>
             <div class="image" v-show="property.isImage">
                 <el-alert
@@ -43,7 +43,6 @@
                 property: {
                     isImage: false,
                     bgColor: '',
-                    bgColorName: '',
                     bgImage: ''
                 }
             }
@@ -64,11 +63,6 @@
             uploadSuccess(url) {
                 this.property.bgColor = '#f0f0f0';
                 this.property.bgImage = url
-                this.propertyChange()
-            },
-            onThemeChange(theme) {
-                this.property.bgColor = theme.color
-                this.property.bgColorName = theme.name
                 this.propertyChange()
             },
             propertyChange() {

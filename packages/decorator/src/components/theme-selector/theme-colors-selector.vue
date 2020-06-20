@@ -32,8 +32,12 @@
 
     export default {
         name: 'theme-colors-selector',
+        model: {
+            prop: 'color',
+            event: 'change'
+        },
         props: {
-            defaultColor: {
+            color: {
                 type: String,
                 default() {
                     return 'white'
@@ -53,27 +57,44 @@
                 }
             }
         },
-        created() {
-            this.themes = JSON.parse(JSON.stringify(themeColors.colors));
-            if (this.defaultColor) {
-                this.selectedTheme.name = this.defaultColor
-                this.selectedTheme.color = '#f0f0f0'
+        watch: {
+            color() {
+                this.setColor()
             }
         },
+        created() {
+            this.themes = JSON.parse(JSON.stringify(themeColors.colors));
+            this.setColor()
+        },
         methods: {
+            setColor() {
+                if (this.color) {
+                    const theme = themeColors.colors.find(p => p.name === this.color || p.color == this.color)
+                    if (theme) {
+                        this.selectedTheme.name = theme.name;
+                        this.selectedTheme.color = theme.color;
+                    } else {
+                        this.selectedTheme.name = '';
+                        this.selectedTheme.color = this.defaultColor;
+                    }
+                } else {
+                    this.selectedTheme.name = this.defaultColor
+                    this.selectedTheme.color = '#f0f0f0'
+                }
+            },
             setDefault() {
                 this.selectedTheme.name = 'gray'
                 this.selectedTheme.color = '#f0f0f0'
-                this.$emit('themeChange', this.selectedTheme)
+                this.$emit('change', this.selectedTheme.name)
             },
             customColorChange() {
                 this.selectedTheme.name = ''
-                this.$emit('themeChange', this.selectedTheme)
+                this.$emit('change', this.selectedTheme.color)
             },
             onThemeChange() {
                 const color = this.themes.find(p => p.name === this.selectedTheme.name);
                 this.selectedTheme.color = color.color
-                this.$emit('themeChange', this.selectedTheme)
+                this.$emit('change', this.selectedTheme.name)
             }
         }
     }

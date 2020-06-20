@@ -1,6 +1,6 @@
 <template>
 	<view class="common-tabs-bar">
-		<view class="cu-bar tabbar" :class="'bg-'+ theme.name">
+		<view class="cu-bar tabbar" :class="'bg-'+ theme.name" :style="{'background-color': theme.name.indexOf('#')==-1 ? '' : theme.name}">
 			<view class="action" v-for="(tab,index) in propertyData.tabs" :key="index" v-show="(index+1) <= propertyData.count"
 			 @tap="clickEvent(index,tab.clickConfig)">
 				<view class="cuIcon-cu-image" v-if="tab.customImage">
