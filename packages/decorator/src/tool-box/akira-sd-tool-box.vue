@@ -3,7 +3,32 @@
         <div v-for="group in toolsGroup" :key="group.name">
             <ul class="tool-group">
                 <li class="tool-item" v-for="item in group.tools" :key="item.name">
-                    <el-tooltip effect="light" :content="item.name" placement="top" :open-delay="800">
+                    <el-popover placement="right"
+                                width="200"
+                                trigger="click"
+                                v-model="subPanelShow"
+                                :open-delay="800" v-if="item.children && item.children.length > 0">
+                        <el-row :gutter="20">
+                            <el-col :span="8" v-for="(cp,index) in item.children" :key="index">
+                                <a href="javascript:;" class="component-in-panel" @click="onComponentClick(cp)">
+                                    <svg class="svg-icon" aria-hidden="true">
+                                        <use :xlink:href="'#' + cp.icon"></use>
+                                    </svg>
+                                    <p>
+                                        <small>{{cp.name}}</small>
+                                    </p>
+                                </a>
+                            </el-col>
+                        </el-row>
+                        <el-tooltip effect="light" slot="reference" :open-delay="800" :content="item.name">
+                            <button class="ak-btn">
+                                <svg class="svg-icon" aria-hidden="true">
+                                    <use :xlink:href="'#' + item.icon"></use>
+                                </svg>
+                            </button>
+                        </el-tooltip>
+                    </el-popover>
+                    <el-tooltip effect="light" :open-delay="800" :content="item.name" v-else>
                         <button class="ak-btn" @click="onComponentClick(item)">
                             <svg class="svg-icon" aria-hidden="true">
                                 <use :xlink:href="'#' + item.icon"></use>
@@ -24,34 +49,37 @@
     import singleButton from '../models/tools-panel/common/single-button.model'
     import noticeBar from '../models/tools-panel/common/notice-bar.model'
     import navList from '../models/tools-panel/common/nav-list.model'
+    import card from '../models/tools-panel/common/card.model'
 
     export default {
         name: 'akira-sd-tool-box',
         data() {
             return {
+                subPanelShow: false,
                 toolsGroup: [{
                     name: 'common',
-                    tools: [topToolBar, searchBar, noticeBar, {
-                        name: '卡片',
-                        componentName: 'common-card',
-                        icon: 'icon-ak-card'
-                    }, navList, bottomTabBar, {
-                        name: '表单',
-                        componentName: 'common-basic-form',
-                        icon: 'icon-ak-form'
-                    }, {
-                        name: '选项卡',
-                        componentName: 'common-tabs',
-                        icon: 'icon-ak-tabs'
-                    }, {
-                        name: '按钮组',
-                        componentName: 'common-buttons-group',
-                        icon: 'icon-ak-btn-group'
-                    }, singleButton, {
-                        name: '浮动按钮',
-                        componentName: 'common-float-button',
-                        icon: 'icon-ak-btn-float'
-                    }]
+                    tools: [topToolBar,
+                        searchBar,
+                        noticeBar,
+                        card,
+                        navList,
+                        bottomTabBar, {
+                            name: '表单',
+                            componentName: 'common-basic-form',
+                            icon: 'icon-ak-form'
+                        }, {
+                            name: '选项卡',
+                            componentName: 'common-tabs',
+                            icon: 'icon-ak-tabs'
+                        }, {
+                            name: '按钮组',
+                            componentName: 'common-buttons-group',
+                            icon: 'icon-ak-btn-group'
+                        }, singleButton, {
+                            name: '浮动按钮',
+                            componentName: 'common-float-button',
+                            icon: 'icon-ak-btn-float'
+                        }]
                 }, {
                     name: 'pictures',
                     tools: [{
@@ -113,6 +141,7 @@
         },
         methods: {
             onComponentClick(item) {
+                this.subPanelShow = false;
                 this.$emit('componentClick', item)
             }
         }
@@ -147,7 +176,19 @@
             width: 36px;
             padding: 4px
         }
+    }
 
+    .component-in-panel {
+        text-decoration: none;
+        font-size: 22px;
+        color: #409EFF;
+        display: inline-block;
+        text-align: center;
+
+        p {
+            margin: 0;
+            font-size: 12px;
+        }
     }
 </style>
 

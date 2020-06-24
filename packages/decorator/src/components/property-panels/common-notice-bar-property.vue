@@ -40,6 +40,9 @@
                     </el-form-item>
                 </el-col>
             </el-row>
+            <el-form-item label="点击事件">
+                <click-event-picker v-model="property.clickConfig" @change="onPropertyChange"></click-event-picker>
+            </el-form-item>
             <el-divider>公告条目</el-divider>
             <el-form-item :label="'公告'+(index+1)" v-for="(item,index) in property.items" :key="index"
                           label-width="60px">
@@ -51,7 +54,6 @@
                 <el-button type="primary" size="small" icon="el-icon-plus" round @click="addNotice">添加公告</el-button>
             </el-form-item>
         </el-form>
-        <click-event-manager v-model="property.clickConfig" @change="onPropertyChange"></click-event-manager>
     </div>
 </template>
 

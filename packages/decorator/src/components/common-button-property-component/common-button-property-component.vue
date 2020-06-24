@@ -52,8 +52,9 @@
                 </el-form-item>
             </el-col>
         </el-row>
-        <click-event-manager v-model="property.clickConfig"
-                             @change="onPropertyChange"></click-event-manager>
+        <el-form-item label="点击事件">
+            <click-event-picker v-model="property.clickConfig" @change="onPropertyChange"></click-event-picker>
+        </el-form-item>
     </el-form>
 </template>
 

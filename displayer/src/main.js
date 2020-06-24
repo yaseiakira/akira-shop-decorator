@@ -3,13 +3,19 @@ import App from './App'
 
 import registerComponents from 'register-components.js'
 
+import {
+	initFilters
+} from '@utils/globle-filters.js'
+
 Vue.config.productionTip = false
 
 App.mpType = 'app'
 
 registerComponents.register();
+console.log()
+initFilters();
 
 const app = new Vue({
-    ...App
+	...App
 })
 app.$mount()

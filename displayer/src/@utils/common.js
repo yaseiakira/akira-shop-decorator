@@ -1,3 +1,15 @@
+import {
+	colors
+} from '../@models/theme-color.model.js'
+
+const themeColorConvert = (value, type) => {
+	const color = colors.find(p => p.name == value)
+	if (color) {
+		return color.color
+	}
+	return ''
+}
+
 const execComponentEvent = (config) => {
 	switch (config.type) {
 		case 0: // 导航
@@ -70,5 +82,6 @@ const execComponentEvent = (config) => {
 	}
 }
 export default {
+	themeColorConvert,
 	execComponentEvent
 }

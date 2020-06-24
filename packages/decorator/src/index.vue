@@ -144,10 +144,6 @@
 <style scoped lang="scss">
     @import "./styles/common.scss";
 
-    .text-right {
-        text-align: right;
-    }
-
     .decorator {
         height: 100%;
         background-color: #f2f2f2;

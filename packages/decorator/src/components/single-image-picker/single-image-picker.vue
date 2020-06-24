@@ -66,13 +66,10 @@
             }
         },
         watch: {
-            uploadedImage(newValue) {
-                if (!newValue) {
-                    this.uploadConfig.processing = false
-                    this.$refs.singleUploader.clearFiles()
-                    this.uploadConfig.displayImage = ''
-                    this.uploadConfig.imageUrl = ''
-                }
+            uploadedImage(newVal) {
+                this.uploadConfig.processing = false
+                this.$refs.singleUploader.clearFiles()
+                this.uploadConfig.displayImage = this.uploadConfig.imageUrl = newVal
             }
         },
         methods: {

@@ -1,7 +1,7 @@
 <template>
     <div class="click-event-manager">
-        <el-divider>{{title}}</el-divider>
-        <el-form class="click-event-manager">
+        <el-divider v-if="title">{{title}}</el-divider>
+        <el-form>
             <el-form-item label="类型">
                 <el-radio-group v-model="config.type" @change="propertyChange">
                     <el-radio :label="0">导航</el-radio>
@@ -92,6 +92,9 @@
                               @input="propertyChange"></el-input>
                 </el-form-item>
             </div>
+            <el-form-item class="text-center">
+                <el-button type="primary" size="small" round @click="confirm">确 定</el-button>
+            </el-form-item>
         </el-form>
     </div>
 </template>
@@ -106,7 +109,7 @@
         props: {
             title: {
                 type: String,
-                default: '点击事件设置'
+                default: ''
             },
             config: {
                 type: Object
@@ -128,6 +131,9 @@
             return {}
         },
         methods: {
+            confirm() {
+                this.$emit('confirm')
+            },
             setConfig() {
                 if (this.config) {
                     this.form = this.config
@@ -141,5 +147,10 @@
 </script>
 
 <style scoped>
-
+    @import "../../styles/common.scss";
+    .click-event-manager {
+        max-height: 520px;
+        overflow: hidden;
+        overflow-y: auto;
+    }
 </style>

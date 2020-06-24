@@ -24,9 +24,14 @@
                                                v-model="tab.icon"></colorui-icon-selector>
                     </el-form-item>
                 </el-col>
-                <el-col :span="8">
+                <el-col :span="10">
                     <el-form-item label="自定义图片">
                         <el-switch v-model="tab.customImage" @change="onPropertyChange"></el-switch>
+                    </el-form-item>
+                </el-col>
+                <el-col :span="8">
+                    <el-form-item label="事件">
+                        <click-event-picker v-model="tab.clickConfig" @change="onPropertyChange"></click-event-picker>
                     </el-form-item>
                 </el-col>
             </el-row>
@@ -51,8 +56,6 @@
                     </el-col>
                 </el-row>
             </div>
-            <click-event-manager v-model="tab.clickConfig"
-                                 @change="onPropertyChange"></click-event-manager>
         </el-form>
     </div>
 </template>
