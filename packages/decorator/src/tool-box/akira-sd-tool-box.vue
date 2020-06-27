@@ -43,13 +43,13 @@
 </template>
 
 <script>
-    import topToolBar from '../models/tools-panel/common/top-tool-bar.model'
-    import bottomTabBar from '../models/tools-panel/common/bottom-tab-bar.model'
-    import searchBar from '../models/tools-panel/common/search-bar.model'
-    import singleButton from '../models/tools-panel/common/single-button.model'
-    import noticeBar from '../models/tools-panel/common/notice-bar.model'
-    import navList from '../models/tools-panel/common/nav-list.model'
-    import card from '../models/tools-panel/common/card.model'
+    import topToolBar from '../models/panel/common/top-bar'
+    import bottomTabBar from '../models/panel/common/tabs'
+    import searchBar from '../models/panel/common/search-bar'
+    import singleButton from '../models/panel/common/single-button'
+    import noticeBar from '../models/panel/common/notice-bar'
+    import navList from '../models/panel/common/nav-list'
+    import card from '../models/panel/common/card'
 
     export default {
         name: 'akira-sd-tool-box',

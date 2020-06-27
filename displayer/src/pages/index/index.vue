@@ -109,13 +109,13 @@
 			},
 			propertyChange(property) {
 				switch (property.name) {
-					case 'page-property':
+					case 'page-panel':
 						this.pagePropertyChange(property.data);
 						break;
-					case 'common-top-tool-bar-property':
+					case 'bar-top-panel':
 						this.commonTopToolBarPropertyChange(property.data);
 						break;
-					case 'common-tabs-bar-property':
+					case 'tabs-bottom-panel':
 						this.commonBottomTabBarPropertyChange(property.data);
 						break;
 					default:
@@ -147,7 +147,7 @@
 			addComponent(component) {
 				component.active = true;
 				// 如果是顶部工具条
-				if (component.componentName === 'common-top-tool-bar') {
+				if (component.componentName === 'bar-top-panel') {
 					if (this.main.topToolBar) {
 						uni.showModal({
 							tilte: '提示',
@@ -165,7 +165,7 @@
 					return;
 				}
 				// 如果是底部工具栏
-				if (component.componentName === 'common-tabs-bar') {
+				if (component.componentName === 'tabs-bottom-panel') {
 					if (this.main.bottomToolBar) {
 						uni.showModal({
 							tilte: '提示',

@@ -1,34 +1,9 @@
 import AkiraShopDecorator from './decorator'
-// import ClickEventManager from './decorator/src/components/click-event-manager/click-event-manager'
-// import ColoruiIconSelector from './decorator/src/components/colorui-icon-selector/colorui-icon-selector'
-// import CommonSingleButtonProperty from './decorator/src/components/property-panels/common-single-button-property'
-// import CommonTabsBarProperty from './decorator/src/components/property-panels/common-tabs-bar-property'
-// import CommonTopToolBarProperty from './decorator/src/components/property-panels/common-top-tool-bar-property'
-// import CommonSearchBarProperty from './decorator/src/components/property-panels/common-search-bar-property'
-// import PageProperty from './decorator/src/components/property-panels/page-property'
-// import ThemeColorsSelector from './decorator/src/components/theme-selector/theme-colors-selector'
-// import ThemeColorPicker from './decorator/src/components/theme-selector/theme-color-picker'
-// import SingleImagePicker from './decorator/src/components/single-image-picker/single-image-picker'
-// import CommonButtonPropertyComponent from './decorator/src/components/common-button-property-component/common-button-property-component'
-// import CommonNoticeBarProperty from './decorator/src/components/property-panels/common-notice-bar-property'
 
 import register from './decorator/component-register'
 
 const components = [
-    AkiraShopDecorator,
-    // ClickEventManager,
-    // ColoruiIconSelector,
-    // ThemeColorsSelector,
-    // ThemeColorPicker,
-    // SingleImagePicker,
-    // CommonSingleButtonProperty,
-    // CommonTabsBarProperty,
-    // CommonTopToolBarProperty,
-    // CommonSearchBarProperty,
-    // PageProperty,
-    // CommonButtonPropertyComponent,
-    // CommonNoticeBarProperty
-
+    AkiraShopDecorator
 ]
 
 const install = function (Vue) {

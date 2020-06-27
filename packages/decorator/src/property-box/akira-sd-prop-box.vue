@@ -24,10 +24,10 @@
         },
         data() {
             return {
-                activePanel: 'page-property',
+                activePanel: 'page-panel',
                 panels: [{
                     title: '页面设置',
-                    name: 'page-property'
+                    name: 'page-panel'
                 }],
                 activePanels: []
             }
@@ -41,10 +41,10 @@
                     if (this.activePanels.length >= 1) {
                         this.activePanels.splice(1, 1);
                     }
-                    const name = newValue.componentName + '-property';
+                    const name = newValue.componentName;
                     this.activePanels.push({
                         title: newValue.name,
-                        name: newValue.componentName + '-property',
+                        name: newValue.componentName,
                         property: newValue.property
                     })
                     this.activePanel = name

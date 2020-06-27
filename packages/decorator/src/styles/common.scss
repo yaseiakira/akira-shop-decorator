@@ -5,6 +5,7 @@
 .text-right {
   text-align: right;
 }
+
 .text-center {
   text-align: center;
 }
@@ -41,3 +42,9 @@
   fill: currentColor;
   overflow: hidden;
 }
+
+$element-color-primary: #409EFF;
+$element-color-success: #67C23A;
+$element-color-warning: #E6A23C;
+$element-color-danger: #F56C6C;
+$element-color-info: #909399;
