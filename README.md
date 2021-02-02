@@ -107,13 +107,16 @@ Vue.use(AkiraShopDecorator)
     methods:{
       newPage(e) {
         // 返回Promise 或者 页面对象 ,结构同 e 参数, 注意 e.id 必须返回
-        // e = { id:'', name:'页面名称', type:0 , data:{} }
+        // e = { id:'', name:'页面名称', type:0 , data:'' }
         // e.type : 0 首页,1 产品列表 ,2 产品详情,3 个人中心, 4 单页
-        // e.data : 组件json对象 详情可自行 console.log 打印出来查看
+        // e.data : 新页面默认是 '' 空字符串
         return api.newPage(e)           
       },
       savePage(e){
         // 返回Promise 或者 bool 值,标识是否保存成功
+        // e = { id:'page-id', name:'页面名称', type:0 , data:{} }
+        // e.type : 0 首页,1 产品列表 ,2 产品详情,3 个人中心, 4 单页
+        // e.data : 组件json对象 详情可自行 console.log 打印出来查看
         return api.savePage(e)
       },
       deletePage(id){
