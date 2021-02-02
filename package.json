@@ -1,6 +1,6 @@
 {
   "name": "akira-shop-decorator",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "private": false,
   "description": "基于vue.js 和 element-UI 以及 uni-app 的商城装修插件",
   "author": "yaseiakira",
@@ -8,8 +8,8 @@
     "dev": "concurrently \"cd displayer && npm run serve\" \"vue-cli-service serve --open\"",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "lib": "cd displayer && npm run build:h5 && cd.. && vue-cli-service build --target lib --name akira-shop-decorator --dest lib packages/index.js",
-    "postinstall": "copyfiles -E -V public/akira-sd-displayer/** ../../ && echo 已复制 akira-sd-displayer 到 public 目录下"
+    "lib": "vue-cli-service build --target lib --name akira-shop-decorator --dest lib packages/index.js && cd displayer && npm run build:h5",
+    "postinstall": "copyfiles -E -V lib/displayer/** ../../ && echo 已复制 displayer 到 public 目录下"
   },
   "bugs": {
     "url": "https://github.com/yaseiakira/akira-shop-decorator/issues"

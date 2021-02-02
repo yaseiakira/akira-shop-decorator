@@ -64,7 +64,7 @@
             },
             propertyChange() {
                 this.$emit('propertyChange', {
-                    name: 'page-property',
+                    name: this.$options.name,
                     data: this.property
                 })
             }

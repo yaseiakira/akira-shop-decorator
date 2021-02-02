@@ -52,6 +52,10 @@
             }
         },
         methods: {
+            resetComponentProp(){
+                this.activePanels.splice(1, this.activePanels.length);
+                this.activePanel = 'page-panel'
+            },
             onPropertyChange(e) {
                 this.$emit('propertyChange', e);
             }

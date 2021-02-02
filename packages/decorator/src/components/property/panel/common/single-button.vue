@@ -40,7 +40,6 @@
                     </el-form-item>
                 </el-col>
             </el-row>
-
         </el-form>
         <common-colorUI-button :property="property"
                                           @propertyChange="onPropertyChange"></common-colorUI-button>

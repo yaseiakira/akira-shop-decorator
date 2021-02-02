@@ -80,7 +80,7 @@
             "port" : 10086
         },
         "router" : {
-            "base" : "/akira-sd-displayer/"
+            "base" : "./"
         },
         "optimization" : {
             "treeShaking" : {

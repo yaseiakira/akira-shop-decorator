@@ -12,7 +12,6 @@ Vue.config.productionTip = false
 App.mpType = 'app'
 
 registerComponents.register();
-console.log()
 initFilters();
 
 const app = new Vue({
